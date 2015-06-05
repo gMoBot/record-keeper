@@ -1,7 +1,11 @@
 package com.company;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
+import javax.swing.text.StringContent;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class ApplicationProfileDialog extends JDialog {
     private JPanel contentPane;
@@ -18,6 +22,8 @@ public class ApplicationProfileDialog extends JDialog {
     private JComboBox blockName;
 
     public ApplicationProfileDialog() {
+//        createUIComponents();
+        $$$setupUI$$$();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonSubmit);
@@ -75,35 +81,53 @@ public class ApplicationProfileDialog extends JDialog {
         // TODO: Generate Applicator List
 
         // TODO: Generate Date Table
-        //        String[] timeArray = appTimeList();
-////        applicationTime = new JComboBox(timeArray);
-//        JComboBox<String> timeApplied = new JComboBox<String>();
-//        DefaultComboBoxModel<String> timeModel = new DefaultComboBoxModel<>(timeArray);
-////        applicationTime.setModel(new DefaultComboBoxModel<>(timeArray));
-//        timeApplied.setModel(timeModel);
 
+        // TODO: Generate Time List
+        ArrayList arrayList = appTimeList();
+        ArrayListComboBoxModel model = new ArrayListComboBoxModel(arrayList);
+        JComboBox applicationTime = new JComboBox(model);
+
+//        Vector<String> timeArray = appTimeList();
+
+//        applicationTime = new JComboBox(timeArray);
+//        DefaultComboBoxModel<String> timeModel = new DefaultComboBoxModel<>(timeArray);
+
+//         applicationTime = new JComboBox<String>(timeArray);
+
+//        applicationTime = new JComboBox<String>(timeModel) .setModel(timeModel);
+//        applicationTime.setModel(new DefaultComboBoxModel<>(timeArray));
+//        timeApplied.setModel(timeModel);
+//        applicationTime.setModel(timeModel);
+//        ArrayList arrayList = appTimeList();
+
+        }
         // TODO: Generate Product List
 
+    private void $$$setupUI$$$() {
+        createUIComponents();
     }
-//    private String[] appTimeList(){
-//        String ampm = "am";
-////        String pm = "pm";
+
+    private ArrayList appTimeList(){
+        String ampm = "am";
+//        String pm = "pm";
 //        String[] appTimeList = new String[100];
-//        for (int x = 0; x < 1; x++){
-//            int k = 0;
-//            for (int i = 0; i < 12; i++){
-//                int timeUnit = 0;
-//                for (int j = 0; j < 4; j++){
-//                    String listItem = i + timeUnit + ampm;
-//                    timeUnit = timeUnit + 15;
-//                    appTimeList[k] = listItem;
-//                    k++;
-//                }
+        int k = 0;
+        ArrayList<String> appTimeList = new ArrayList<String>(100);
+        for (int x = 0; x < 1; x++){
+            for (int i = 0; i < 12; i++){
+                int timeUnit = 0;
+                for (int j = 0; j < 4; j++){
+                    String listItem = i + timeUnit + ampm;
+                    timeUnit = timeUnit + 15;
+                    appTimeList.add(k, listItem);
+                    k++;
+                }
 //                k++;
-//                ampm = "pm";
-//            }
-//        }
-//        return appTimeList;
-//    }
+                ampm = "pm";
+            }
+        }
+        appTimeList.trimToSize();
+        return appTimeList;
+    }
 
 }
