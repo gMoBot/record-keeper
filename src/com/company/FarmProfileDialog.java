@@ -3,26 +3,23 @@ package com.company;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class BlockProfileDialog extends JDialog {
+public class FarmProfileDialog extends JDialog {
     private JPanel contentPane;
-    private JButton buttonSubmit;
+    private JButton submit;
     private JButton buttonCancel;
-    private JTextField blockName;
-    private JCheckBox useFarmAddressCheckBox;
-    private JTextField blockStreetAddress;
-    private JTextField blockZipCode;
-    private JComboBox blockState;
-    private JCheckBox useFarmStateCheckBox;
-    private JTextField blockSize;
-    private JTextField blockCrop;
-    private JSpinner blockSizeSpinner;
+    private JTextField farmName;
+    private JTextField ownerName;
+    private JTextField applicatorNumber;
+    private JTextField streetAddress;
+    private JComboBox state;
+    private JTextField zipCode;
 
-    public BlockProfileDialog() {
+    public FarmProfileDialog() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonSubmit);
+        getRootPane().setDefaultButton(submit);
 
-        buttonSubmit.addActionListener(new ActionListener() {
+        submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onSubmit();
             }
@@ -33,6 +30,7 @@ public class BlockProfileDialog extends JDialog {
                 onCancel();
             }
         });
+
 
 // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -60,16 +58,14 @@ public class BlockProfileDialog extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        BlockProfileDialog dialog = new BlockProfileDialog();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
-
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
-        blockSizeSpinner.setModel(jModel);
     }
+
+//    public static void main(String[] args) {
+//        FarmProfileDialog dialog = new FarmProfileDialog();
+//        dialog.pack();
+//        dialog.setVisible(true);
+//        System.exit(0);
+//    }
 }
