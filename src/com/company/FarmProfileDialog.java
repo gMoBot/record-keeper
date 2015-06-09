@@ -51,6 +51,7 @@ public class FarmProfileDialog extends JDialog {
     private void onSubmit() {
 // add your code here
         dispose();
+
     }
 
     private void onCancel() {

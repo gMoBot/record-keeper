@@ -11,7 +11,6 @@ public class ApplicationProfileDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonSubmit;
     private JButton buttonCancel;
-    private JComboBox comboBox1;
     private JTable dateTable;
     private JComboBox product;
     private JTextField targetPest;
