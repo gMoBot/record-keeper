@@ -15,16 +15,6 @@
 
     <context:component-scan base-package="com.company"/>
 
-    <!--<bean id="metrolink" class="com.example.pset6.utilities.Metrolink">-->
-    <!--<property name="appOutput" ref="screenOutput"/>-->
-    <!--<property name="metrolinkDao" ref="metrolinkDao"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="screenOutput" class="com.example.pset6.utilities.ScreenOutput"/>-->
-
-    <!--<bean id="metrolinkDao" class="com.example.pset6.dao.SQLiteJDBCDao">-->
-    <!--<property name="appOutput" ref="screenOutput"/>-->
-    <!--</bean>-->
     <tx:annotation-driven/>
 
     <context:annotation-config/>
@@ -35,8 +25,7 @@
 
         <!--<property name="annotatedClasses">-->
             <!--<list>-->
-                <!--<value>com.example.pset6.utilities.Stop</value>-->
-                <!--<value>com.example.pset6.utilities.Time</value>-->
+                <!--<value>com.</value>-->
             <!--</list>-->
         <!--</property>-->
 
@@ -52,10 +41,10 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <!--<bean id="dataSource"-->
-          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <!--<property name="driverClassName" value="org.sqlite.JDBC" />-->
-        <!--<property name="url" value="jdbc:sqlite:metrolink.db" />-->
-    <!--</bean>-->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.sqlite.JDBC" />
+        <property name="url" value="jdbc:sqlite:farm_records.db" />
+    </bean>
 
 </beans>

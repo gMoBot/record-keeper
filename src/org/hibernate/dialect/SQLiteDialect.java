@@ -123,20 +123,20 @@ public class SQLiteDialect extends Dialect {
         return "select last_insert_rowid()";
     }
 
-    @Override
-    public boolean supportsLimit() {
-        return true;
-    }
+//    @Override
+//    public boolean supportsLimit() {
+//        return true;
+//    }
 
-    @Override
-    public boolean bindLimitParametersInReverseOrder() {
-        return true;
-    }
-
-    @Override
-    protected String getLimitString(String query, boolean hasOffset) {
-        return query + (hasOffset ? " limit ? offset ?" : " limit ?");
-    }
+//    @Override
+//    public boolean bindLimitParametersInReverseOrder() {
+//        return true;
+//    }
+//
+//    @Override
+//    protected String getLimitString(String query, boolean hasOffset) {
+//        return query + (hasOffset ? " limit ? offset ?" : " limit ?");
+//    }
 
     @Override
     public boolean supportsTemporaryTables() {
@@ -187,26 +187,26 @@ public class SQLiteDialect extends Dialect {
     private static final int SQLITE_CONSTRAINT = 19;
     private static final int SQLITE_MISMATCH = 20;
     private static final int SQLITE_NOTADB = 26;
-    @Override
-    public SQLExceptionConverter buildSQLExceptionConverter() {
-        return new SQLExceptionConverter() {
-            @Override
-            public JDBCException convert(SQLException sqlException, String message, String sql) {
-                final int errorCode = org.hibernate.internal.util.JdbcExceptionHelper.extractErrorCode(sqlException);
-                if (errorCode == SQLITE_CONSTRAINT) {
-                    final String constraintName = EXTRACTER.extractConstraintName(sqlException);
-                    return new ConstraintViolationException(message, sqlException, sql, constraintName);
-                } else if (errorCode == SQLITE_TOOBIG || errorCode == SQLITE_MISMATCH) {
-                    return new DataException(message, sqlException, sql);
-                } else if (errorCode == SQLITE_BUSY || errorCode == SQLITE_LOCKED) {
-                    return new LockAcquisitionException(message, sqlException, sql);
-                } else if ((errorCode >= SQLITE_IOERR && errorCode <= SQLITE_PROTOCOL) || errorCode == SQLITE_NOTADB) {
-                    return new JDBCConnectionException(message, sqlException, sql);
-                }
-                return new GenericJDBCException(message, sqlException, sql);
-            }
-        };
-    }
+//    @Override
+//    public SQLExceptionConverter buildSQLExceptionConverter() {
+//        return new SQLExceptionConverter() {
+//            @Override
+//            public JDBCException convert(SQLException sqlException, String message, String sql) {
+//                final int errorCode = org.hibernate.internal.util.JdbcExceptionHelper.extractErrorCode(sqlException);
+//                if (errorCode == SQLITE_CONSTRAINT) {
+//                    final String constraintName = EXTRACTER.extractConstraintName(sqlException);
+//                    return new ConstraintViolationException(message, sqlException, sql, constraintName);
+//                } else if (errorCode == SQLITE_TOOBIG || errorCode == SQLITE_MISMATCH) {
+//                    return new DataException(message, sqlException, sql);
+//                } else if (errorCode == SQLITE_BUSY || errorCode == SQLITE_LOCKED) {
+//                    return new LockAcquisitionException(message, sqlException, sql);
+//                } else if ((errorCode >= SQLITE_IOERR && errorCode <= SQLITE_PROTOCOL) || errorCode == SQLITE_NOTADB) {
+//                    return new JDBCConnectionException(message, sqlException, sql);
+//                }
+//                return new GenericJDBCException(message, sqlException, sql);
+//            }
+//        };
+//    }
 
     public static final ViolatedConstraintNameExtracter EXTRACTER = new TemplatedViolatedConstraintNameExtracter() {
         public String extractConstraintName(SQLException sqle) {

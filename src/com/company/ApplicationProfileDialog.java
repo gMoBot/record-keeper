@@ -22,7 +22,7 @@ public class ApplicationProfileDialog extends JDialog {
 
     public ApplicationProfileDialog() {
 //        createUIComponents();
-        $$$setupUI$$$();
+//        $$$setupUI$$$();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonSubmit);

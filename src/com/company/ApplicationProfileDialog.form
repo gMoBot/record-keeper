@@ -165,7 +165,7 @@
               <text value="Application Time:"/>
             </properties>
           </component>
-          <component id="c6fc0" class="javax.swing.JComboBox" binding="applicationTime" custom-create="true">
+          <component id="c6fc0" class="javax.swing.JComboBox" binding="applicationTime">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
