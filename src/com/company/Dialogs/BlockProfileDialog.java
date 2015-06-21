@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Dialogs;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -67,9 +67,9 @@ public class BlockProfileDialog extends JDialog {
         System.exit(0);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
-        blockSizeSpinner.setModel(jModel);
-    }
+//    private void createUIComponents() {
+//        // TODO: place custom component creation code here
+//        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
+//        blockSizeSpinner.setModel(jModel);
+//    }
 }

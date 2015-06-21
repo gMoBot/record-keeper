@@ -1,5 +1,7 @@
 package com.company.Models;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 
 /**
@@ -12,8 +14,10 @@ public class FarmProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @NotNull
     @Column(name= "farm_id", unique = true, nullable = false)
     private int id;
+
     @Column(name="farm_name")
     private String farmName;
     @Column(name="owner_name")

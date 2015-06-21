@@ -6,7 +6,7 @@ drop table if exists product_profile;
 drop table if exists applicator_profile;
 
 create table farm_profile (
-	farm_id char(20) PRIMARY KEY,
+	farm_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	farm_name char(60),
 	owner_name char(60),
 	street_address char(60),
@@ -56,8 +56,8 @@ create table product_profile (
 );
 
 
--- .separator ,
--- .import raw/trips.txt trips
+.separator ,
+.import farmProfile.txt farm_profile
 -- .import raw/routes.txt routes
 -- .import raw/stops.txt stops
 -- .import raw/stop_times.txt stop_times

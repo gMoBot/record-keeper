@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.BlockProfile">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.Dialogs.BlockProfile">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FormLayout">
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:3dlu:noGrow"/>
@@ -46,7 +46,7 @@
           <text value="Block Size (acres)"/>
         </properties>
       </component>
-      <component id="532ec" class="javax.swing.JSpinner" binding="BlockSize" custom-create="true">
+      <component id="532ec" class="javax.swing.JSpinner" binding="BlockSize">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Dialogs;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,11 +15,11 @@ public class BlockProfile {
 //    jModel = javax.swing.SpinnerNumberModel(24,20,35,1);
     private JSpinner BlockSize;
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-        JSpinner jspinner = new JSpinner();
-        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
-        jspinner.setModel(jModel);
-
-    }
+//    private void createUIComponents() {
+//        // TODO: place custom component creation code here
+//        JSpinner jspinner = new JSpinner();
+//        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
+//        jspinner.setModel(jModel);
+//
+//    }
 }
