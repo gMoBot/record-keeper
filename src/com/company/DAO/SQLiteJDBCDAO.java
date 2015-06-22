@@ -1,6 +1,7 @@
 package com.company.DAO;
 
 import com.company.FarmProfileDao;
+import com.company.Models.BlockProfile;
 import com.company.Models.FarmProfile;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -37,6 +38,21 @@ public class SQLiteJDBCDAO implements FarmProfileDao {
     public void saveFarmProfile(FarmProfile farmProfile){
         sessionFactoryBean.getCurrentSession().beginTransaction();
         sessionFactoryBean.getCurrentSession().saveOrUpdate(farmProfile);
+        sessionFactoryBean.getCurrentSession().getTransaction().commit();
+    }
+
+    public List<BlockProfile> getBlockProfile() {
+        sessionFactoryBean.getCurrentSession().beginTransaction();
+        Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(BlockProfile.class);
+        criteria.add(Restrictions.isNotNull("id"));
+        List list = criteria.list();
+        sessionFactoryBean.getCurrentSession().getTransaction().commit();
+        return list;
+    }
+
+    public void saveBlockProfile(BlockProfile blockProfile) {
+        sessionFactoryBean.getCurrentSession().beginTransaction();
+        sessionFactoryBean.getCurrentSession().saveOrUpdate(blockProfile);
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
     }
 }

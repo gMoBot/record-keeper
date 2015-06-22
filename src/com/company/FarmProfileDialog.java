@@ -16,7 +16,7 @@ public class FarmProfileDialog extends JDialog {
     private JComboBox state;
     private JTextField zipCode;
 
-    public FarmProfile farmProfile = new FarmProfile();
+    private FarmProfile farmProfile = new FarmProfile();
 
     public FarmProfileDialog() {
         setContentPane(contentPane);

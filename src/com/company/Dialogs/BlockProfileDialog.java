@@ -1,5 +1,7 @@
 package com.company.Dialogs;
 
+import com.company.Models.BlockProfile;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -8,14 +10,18 @@ public class BlockProfileDialog extends JDialog {
     private JButton buttonSubmit;
     private JButton buttonCancel;
     private JTextField blockName;
-    private JCheckBox useFarmAddressCheckBox;
     private JTextField blockStreetAddress;
     private JTextField blockZipCode;
     private JComboBox blockState;
-    private JCheckBox useFarmStateCheckBox;
     private JTextField blockSize;
     private JTextField blockCrop;
-    private JSpinner blockSizeSpinner;
+//    private JSpinner blockSizeSpinner;
+
+    private BlockProfile blockProfile;
+
+    public BlockProfile getBlockProfile() {
+        return blockProfile;
+    }
 
     public BlockProfileDialog() {
         setContentPane(contentPane);
@@ -52,7 +58,16 @@ public class BlockProfileDialog extends JDialog {
 
     private void onSubmit() {
 // add your code here
-        dispose();
+//        blockProfile.setFarmId();
+        blockProfile = new BlockProfile();
+        blockProfile.setBlockName(String.valueOf(blockName.getText()));
+        blockProfile.setBlockStreetAddress(String.valueOf(blockStreetAddress.getText()));
+        blockProfile.setBlockStateCode(String.valueOf(blockState.getSelectedItem()));
+        blockProfile.setBlockZipcode(String.valueOf(blockZipCode.getText()));
+        blockProfile.setBlockSize(Float.parseFloat(blockSize.getText()));
+        blockProfile.setBlockCrop(String.valueOf(blockCrop.getText()));
+        setVisible(false);
+
     }
 
     private void onCancel() {
@@ -71,5 +86,8 @@ public class BlockProfileDialog extends JDialog {
 //        // TODO: place custom component creation code here
 //        SpinnerModel jModel = new SpinnerNumberModel(0, 0, 1000, .5);
 //        blockSizeSpinner.setModel(jModel);
+    //        JSpinner jspinner = new JSpinner();
+//
+//    }
 //    }
 }

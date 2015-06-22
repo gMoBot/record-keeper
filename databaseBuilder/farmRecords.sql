@@ -23,7 +23,7 @@ create table applicator_profile (
 	);
 
 create table block_profile (
-	block_id char(20) PRIMARY KEY,
+	block_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	farm_id char(20),
 	block_name char(60),
 	block_street_address char(60),
@@ -35,7 +35,7 @@ create table block_profile (
 );
 
 create table application_profile (
-	app_id char(20) PRIMARY KEY,
+	app_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	block_name char(60),
 	product_name char(60),
 	app_number char(20),
@@ -58,6 +58,4 @@ create table product_profile (
 
 .separator ,
 .import farmProfile.txt farm_profile
--- .import raw/routes.txt routes
--- .import raw/stops.txt stops
--- .import raw/stop_times.txt stop_times
+
