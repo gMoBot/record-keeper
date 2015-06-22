@@ -11,13 +11,10 @@
 	       http://www.springframework.org/schema/tx
            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <!--<context:component-scan base-package="com.company"/>-->
     <context:component-scan base-package="com.company"/>
     <tx:annotation-driven/>
     <context:annotation-config/>
-    <!--<bean id="farmRecordsApp" class="com.company.FarmRecordsApp">-->
-    <!--</bean>-->
-    <!--<bean id="farmProfileDao" class="com.company.FarmProfileDao" abstract="true"/>-->
+
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />

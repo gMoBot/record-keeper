@@ -16,7 +16,6 @@ import java.util.List;
  */
 
 //@Transactional
-//@Component
 @Repository
 public class SQLiteJDBCDAO implements FarmProfileDao {
 
@@ -27,21 +26,16 @@ public class SQLiteJDBCDAO implements FarmProfileDao {
 
 
     public List<FarmProfile> getFarmProfile() {
-//        List list = Collections.emptyList();
         sessionFactoryBean.getCurrentSession().beginTransaction();
         Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(FarmProfile.class);
         criteria.add(Restrictions.isNotNull("id"));
         List list = criteria.list();
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
-//        if (list.isEmpty()){
-//            return Collections.EMPTY_LIST;
-//        }
         return list;
     }
 
     public void saveFarmProfile(FarmProfile farmProfile){
         sessionFactoryBean.getCurrentSession().beginTransaction();
-//        Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(FarmProfile.class);
         sessionFactoryBean.getCurrentSession().saveOrUpdate(farmProfile);
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
     }
