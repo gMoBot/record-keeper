@@ -3,7 +3,9 @@ package com.company;
 import com.company.Models.FarmProfile;
 
 import javax.swing.*;
+import javax.xml.bind.util.ValidationEventCollector;
 import java.awt.event.*;
+import java.util.Vector;
 
 public class FarmProfileDialog extends JDialog {
 
@@ -15,6 +17,8 @@ public class FarmProfileDialog extends JDialog {
     private JTextField streetAddress;
     private JComboBox state;
     private JTextField zipCode;
+
+    private JList<FarmProfile> farmProfileJList;
 
     private FarmProfile farmProfile = new FarmProfile();
 
@@ -80,5 +84,13 @@ public class FarmProfileDialog extends JDialog {
 
     public FarmProfile getFarmProfile(){
         return farmProfile;
+    }
+
+    public void setFarmProfileList(DefaultListModel<FarmProfile> profileDefaultListModel){
+        farmProfileJList = new JList<FarmProfile>(profileDefaultListModel);
+//        farmProfileJList.setFixedCellHeight(40);
+//        farmProfileJList.setSelectedIndex(-1);
+        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
+        contentPane.add(farmProfileJList);
     }
 }

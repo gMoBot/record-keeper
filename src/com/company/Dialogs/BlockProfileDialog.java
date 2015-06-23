@@ -1,10 +1,20 @@
 package com.company.Dialogs;
 
+import com.company.DAO.SQLiteDAO;
+import com.company.FarmProfileDao;
+import com.company.FarmRecordsApp;
 import com.company.Models.BlockProfile;
+import com.company.Models.FarmProfile;
+import jdk.nashorn.internal.ir.BlockLexicalContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.List;
+import java.util.Vector;
 
+@Component
 public class BlockProfileDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonSubmit;
@@ -15,18 +25,23 @@ public class BlockProfileDialog extends JDialog {
     private JComboBox blockState;
     private JTextField blockSize;
     private JTextField blockCrop;
+    private JList<BlockProfile> blockProfileJList;
 //    private JSpinner blockSizeSpinner;
 
     private BlockProfile blockProfile;
+
 
     public BlockProfile getBlockProfile() {
         return blockProfile;
     }
 
+
     public BlockProfileDialog() {
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonSubmit);
+
 
         buttonSubmit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +72,6 @@ public class BlockProfileDialog extends JDialog {
     }
 
     private void onSubmit() {
-// add your code here
 //        blockProfile.setFarmId();
         blockProfile = new BlockProfile();
         blockProfile.setBlockName(String.valueOf(blockName.getText()));

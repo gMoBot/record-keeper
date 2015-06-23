@@ -8,7 +8,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.util.List;
+import java.util.Vector;
 
 @Component (value= "farmRecordsApp")
 public class FarmRecordsApp {
@@ -17,6 +19,8 @@ public class FarmRecordsApp {
 
     @Autowired
     private FarmProfileDao farmProfileDao;
+
+    private List<FarmProfile> farmProfiles;
 
     public static void main(String[] args) {
 
@@ -30,7 +34,7 @@ public class FarmRecordsApp {
         System.out.println("Welcome!");
         System.out.println("Loading Farm Profile window...");
 
-        List<FarmProfile> farmProfiles = farmProfileDao.getFarmProfile();
+        farmProfiles = farmProfileDao.getFarmProfile();
         for (FarmProfile farmProfile : farmProfiles){
             System.out.format("%s\n", farmProfile.getFarmName());
         }
@@ -60,7 +64,18 @@ public class FarmRecordsApp {
     }
 
     private void enterFarmProfile() {
+//        Vector<FarmProfile> profileList = new Vector<FarmProfile>();
+//        for(FarmProfile farmProfile : farmProfiles){
+//            profileList.add(farmProfile);
+//        }
+        //TODO: Fix data functionality on this model
+        DefaultListModel<FarmProfile> profileDefaultListModel = new DefaultListModel<FarmProfile>();
+        for(FarmProfile farmProfile : farmProfiles) {
+            profileDefaultListModel.addElement(farmProfile);
+        }
+
         FarmProfileDialog farmProfileDialog = new FarmProfileDialog();
+        farmProfileDialog.setFarmProfileList(profileDefaultListModel);
         farmProfileDialog.pack();
         farmProfileDialog.setVisible(true);
 

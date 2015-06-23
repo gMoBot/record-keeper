@@ -18,9 +18,9 @@ import java.util.List;
 
 //@Transactional
 @Repository
-public class SQLiteJDBCDAO implements FarmProfileDao {
-
-    public SQLiteJDBCDAO(){}
+public class SQLiteDAO implements FarmProfileDao {
+//    SQLiteDAO sqLiteDAO;
+//
 
     @Autowired
     private SessionFactory sessionFactoryBean;
