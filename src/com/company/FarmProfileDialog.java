@@ -18,7 +18,7 @@ public class FarmProfileDialog extends JDialog {
     private JComboBox state;
     private JTextField zipCode;
 
-    private JList<FarmProfile> farmProfileJList;
+    private JList<String> farmProfileJList;
 
     private FarmProfile farmProfile = new FarmProfile();
 
@@ -86,8 +86,8 @@ public class FarmProfileDialog extends JDialog {
         return farmProfile;
     }
 
-    public void setFarmProfileList(DefaultListModel<FarmProfile> profileDefaultListModel){
-        farmProfileJList = new JList<FarmProfile>(profileDefaultListModel);
+    public void setFarmProfileList(DefaultListModel<String> profileDefaultListModel){
+        farmProfileJList = new JList<String>(profileDefaultListModel);
 //        farmProfileJList.setFixedCellHeight(40);
 //        farmProfileJList.setSelectedIndex(-1);
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));

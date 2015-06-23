@@ -68,10 +68,10 @@ public class FarmRecordsApp {
 //        for(FarmProfile farmProfile : farmProfiles){
 //            profileList.add(farmProfile);
 //        }
-        //TODO: Fix data functionality on this model
-        DefaultListModel<FarmProfile> profileDefaultListModel = new DefaultListModel<FarmProfile>();
+        //TODO: Fine tune data functionality and display on this model
+        DefaultListModel<String> profileDefaultListModel = new DefaultListModel<String>();
         for(FarmProfile farmProfile : farmProfiles) {
-            profileDefaultListModel.addElement(farmProfile);
+            profileDefaultListModel.addElement(farmProfile.getFarmName());
         }
 
         FarmProfileDialog farmProfileDialog = new FarmProfileDialog();
