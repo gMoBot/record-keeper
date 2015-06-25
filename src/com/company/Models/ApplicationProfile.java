@@ -14,6 +14,8 @@ public class ApplicationProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "app_id", unique = true, nullable = false)
     private int appId;
+    @Column(name = "farm_id")
+    private String farmId;
     @Column(name = "app_number")
     private String blockName;
     @Column(name = "block_name")
@@ -34,7 +36,13 @@ public class ApplicationProfile {
     public void setAppId(int appId) {
         this.appId = appId;
     }
+    public String getFarmId() {
+        return farmId;
+    }
 
+    public void setFarmId(String farmId) {
+        this.farmId = farmId;
+    }
     public String getBlockName() {
         return blockName;
     }

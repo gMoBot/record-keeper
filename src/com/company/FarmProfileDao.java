@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Models.ApplicationProfile;
 import com.company.Models.BlockProfile;
 import com.company.Models.FarmProfile;
 import org.springframework.stereotype.Component;
@@ -17,5 +18,5 @@ public interface FarmProfileDao {
     public List<BlockProfile> getBlockProfile();
     public List<BlockProfile> getFarmBlockProfiles(String selectedFarmId);
     public void saveBlockProfile(BlockProfile blockProfile);
-
+    public List<ApplicationProfile> getOverviewApplicationProfiles(String selectedFarmId);
     }

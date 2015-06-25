@@ -36,6 +36,7 @@ create table block_profile (
 
 create table application_profile (
 	app_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	farm_id char(20),
 	block_name char(60),
 	product_name char(60),
 	app_number char(20),
@@ -43,6 +44,7 @@ create table application_profile (
   target_pest char(40),
   app_notes char(200),
 	app_time char(30),
+	FOREIGN KEY(farm_id) references farm_profile(farm_id),
 	FOREIGN KEY(block_name) references block_profile(block_name),
 	FOREIGN KEY(product_name) references product_profile(product_name),
 	FOREIGN KEY(app_number) references applicator_profile(app_number)

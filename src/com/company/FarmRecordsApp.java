@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.Dialogs.BlockProfileDialog;
 import com.company.Dialogs.FarmSelectorDialog;
+import com.company.Models.ApplicationProfile;
 import com.company.Models.BlockProfile;
 import com.company.Models.FarmProfile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class FarmRecordsApp {
 
     private String selectedFarmName;
     private List<FarmProfile> selectedFarmProfile;
+    private String selectedFarmId;
 
     public static void main(String[] args) {
 
@@ -45,34 +47,38 @@ public class FarmRecordsApp {
 
         generateFarmSelector();
         selectedFarmProfile = farmProfileDao.getSelectedFarmProfile(selectedFarmName);
+        selectedFarmId = String.valueOf(selectedFarmProfile.get(0).getId());
 
         System.out.format("Selected Farm Name: %s\n", selectedFarmName);
 
-        generateSelectedBlockProfile();
+        generateFarmOverview();
 
-        List<BlockProfile> blockProfiles = farmProfileDao.getBlockProfile();
-        for (BlockProfile blockProfile : blockProfiles){
-            System.out.format("%s\n", blockProfile.getBlockName());
-        }
+//        generateSelectedBlockProfile();
+
+//        List<BlockProfile> blockProfiles = farmProfileDao.getBlockProfile();
+//        for (BlockProfile blockProfile : blockProfiles){
+//            System.out.format("%s\n", blockProfile.getBlockName());
+//        }
         // Call and load farm profile dialog window
 //        enterFarmProfile();
 
-        // verify profile is saved
-        List<FarmProfile> savedFarmProfiles = farmProfileDao.getFarmProfile();
-        for (FarmProfile farmProfile : savedFarmProfiles){
-            System.out.format("%s\n", farmProfile.getFarmName());
-        }
+//        // verify profile is saved
+//        List<FarmProfile> savedFarmProfiles = farmProfileDao.getFarmProfile();
+//        for (FarmProfile farmProfile : savedFarmProfiles){
+//            System.out.format("%s\n", farmProfile.getFarmName());
+//        }
 
         // Call and load block profile dialog window
-        enterBlockProfile();
+//        enterBlockProfile();
 
-        List<BlockProfile> savedBlockProfiles = farmProfileDao.getBlockProfile();
-        for (BlockProfile blockProfile : savedBlockProfiles){
-            System.out.format("%s\n", blockProfile.getBlockName());
-        }
+//        List<BlockProfile> savedBlockProfiles = farmProfileDao.getBlockProfile();
+//        for (BlockProfile blockProfile : savedBlockProfiles){
+//            System.out.format("%s\n", blockProfile.getBlockName());
+//        }
         System.exit(0);
 
     }
+
 
     private void generateFarmSelector() {
 //        Vector<FarmProfile> profileList = new Vector<FarmProfile>();
@@ -124,6 +130,42 @@ public class FarmRecordsApp {
         }
     }
 
+    private void generateFarmOverview() {
+            //TODO: Fine tune data functionality and display on this model
+            DefaultListModel<String> farmOverviewDefaultListModel = new DefaultListModel<String>();
+            List<ApplicationProfile> appProfiles = farmProfileDao.getOverviewApplicationProfiles(selectedFarmId);
+            if(appProfiles.isEmpty()){
+                farmOverviewDefaultListModel.add(0, "ExampleDate");
+                farmOverviewDefaultListModel.add(1, "ExampleTime");
+                farmOverviewDefaultListModel.add(2, "Example Block Name");
+                farmOverviewDefaultListModel.add(3, "Example Target Pest");
+                farmOverviewDefaultListModel.add(4, "Example Application Notes");
+            }
+            else {
+                for (ApplicationProfile applicationProfile : appProfiles) {
+                    farmOverviewDefaultListModel.addElement(applicationProfile.getAppDate());
+                    farmOverviewDefaultListModel.addElement(applicationProfile.getAppTime());
+                    farmOverviewDefaultListModel.addElement(applicationProfile.getBlockName());
+                    farmOverviewDefaultListModel.addElement(applicationProfile.getTargetPest());
+                    farmOverviewDefaultListModel.addElement(applicationProfile.getAppNotes());
+                }
+            }
+            FarmSelectorDialog farmSelectorDialog = new FarmSelectorDialog();
+            farmSelectorDialog.setFarmProfileList(farmOverviewDefaultListModel);
+            farmSelectorDialog.pack();
+            farmSelectorDialog.setVisible(true);
+
+//            if (farmSelectorDialog.getFarmName() != null) {
+//                if (farmSelectorDialog.getFarmName().equals("CreateNew")) {
+//                    enterFarmProfile();
+//                    generateFarmSelector();
+//                } else {
+//                    selectedFarmName = farmSelectorDialog.getFarmName();
+//                }
+//            }
+    }
+
+
     private void enterBlockProfile(){
 
         BlockProfileDialog blockProfileDialog = new BlockProfileDialog();
@@ -137,7 +179,7 @@ public class FarmRecordsApp {
     }
 
     private void generateSelectedBlockProfile(){
-        String selectedFarmId = String.valueOf(selectedFarmProfile.get(0).getId());
+
         List<BlockProfile> selectedBlockProfiles = farmProfileDao.getFarmBlockProfiles(selectedFarmId);
 
         for (BlockProfile blockProfile : selectedBlockProfiles){

@@ -1,6 +1,7 @@
 package com.company.DAO;
 
 import com.company.FarmProfileDao;
+import com.company.Models.ApplicationProfile;
 import com.company.Models.BlockProfile;
 import com.company.Models.FarmProfile;
 import org.hibernate.Criteria;
@@ -74,4 +75,15 @@ public class SQLiteDAO implements FarmProfileDao {
         sessionFactoryBean.getCurrentSession().saveOrUpdate(blockProfile);
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
     }
+
+    public List<ApplicationProfile> getOverviewApplicationProfiles(String selectedFarmId){
+        sessionFactoryBean.getCurrentSession().beginTransaction();
+        Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(ApplicationProfile.class);
+        criteria.add(Restrictions.eq("farmId", selectedFarmId));
+        criteria.setMaxResults(10);
+        List list = criteria.list();
+        sessionFactoryBean.getCurrentSession().getTransaction().commit();
+        return list;
+    }
+
 }
