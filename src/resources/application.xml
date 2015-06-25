@@ -23,6 +23,9 @@
             <list>
                 <value>com.company.Models.FarmProfile</value>
                 <value>com.company.Models.BlockProfile</value>
+                <!--<value>com.company.Models.ApplicationProfile</value>-->
+                <!--<value>com.company.Models.ApplicatorProfile</value>-->
+                <!--<value>com.company.Models.ProductProfile</value>-->
             </list>
         </property>
 

@@ -18,9 +18,9 @@ public class FarmProfileDialog extends JDialog {
     private JComboBox state;
     private JTextField zipCode;
 
-    private JList<String> farmProfileJList;
+//    private JList<String> farmProfileJList;
 
-    private FarmProfile farmProfile = new FarmProfile();
+    private FarmProfile farmProfile;
 
     public FarmProfileDialog() {
         setContentPane(contentPane);
@@ -58,6 +58,7 @@ public class FarmProfileDialog extends JDialog {
 
     private void onSubmit() {
         // Create new Farm Profile Object
+        farmProfile = new FarmProfile();
         farmProfile.setFarmName(String.valueOf(farmName.getText()));
         farmProfile.setOwnerName(String.valueOf(ownerName.getText()));
         farmProfile.setStreetAddress(String.valueOf(streetAddress.getText()));
@@ -86,11 +87,11 @@ public class FarmProfileDialog extends JDialog {
         return farmProfile;
     }
 
-    public void setFarmProfileList(DefaultListModel<String> profileDefaultListModel){
-        farmProfileJList = new JList<String>(profileDefaultListModel);
-//        farmProfileJList.setFixedCellHeight(40);
-//        farmProfileJList.setSelectedIndex(-1);
-        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
-        contentPane.add(farmProfileJList);
-    }
+//    public void setFarmProfileList(DefaultListModel<String> profileDefaultListModel){
+//        farmProfileJList = new JList<String>(profileDefaultListModel);
+////        farmProfileJList.setFixedCellHeight(40);
+////        farmProfileJList.setSelectedIndex(-1);
+//        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
+//        contentPane.add(farmProfileJList);
+//    }
 }

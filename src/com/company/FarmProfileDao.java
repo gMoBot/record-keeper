@@ -13,7 +13,9 @@ import java.util.List;
 public interface FarmProfileDao {
     public List<FarmProfile> getFarmProfile();
     public void saveFarmProfile(FarmProfile farmProfile);
+    public List<FarmProfile> getSelectedFarmProfile(String selectedFarmName);
     public List<BlockProfile> getBlockProfile();
+    public List<BlockProfile> getFarmBlockProfiles(String selectedFarmId);
     public void saveBlockProfile(BlockProfile blockProfile);
 
     }

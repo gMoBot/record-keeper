@@ -41,10 +41,29 @@ public class SQLiteDAO implements FarmProfileDao {
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
     }
 
+    public List<FarmProfile> getSelectedFarmProfile(String selectedFarmName) {
+        sessionFactoryBean.getCurrentSession().beginTransaction();
+        Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(FarmProfile.class);
+        criteria.add(Restrictions.eq("farmName", selectedFarmName));
+        criteria.setMaxResults(1);
+        List list = criteria.list();
+        sessionFactoryBean.getCurrentSession().getTransaction().commit();
+        return list;
+    }
+
     public List<BlockProfile> getBlockProfile() {
         sessionFactoryBean.getCurrentSession().beginTransaction();
         Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(BlockProfile.class);
         criteria.add(Restrictions.isNotNull("id"));
+        List list = criteria.list();
+        sessionFactoryBean.getCurrentSession().getTransaction().commit();
+        return list;
+    }
+
+    public List<BlockProfile> getFarmBlockProfiles(String selectedFarmId) {
+        sessionFactoryBean.getCurrentSession().beginTransaction();
+        Criteria criteria = sessionFactoryBean.getCurrentSession().createCriteria(BlockProfile.class);
+        criteria.add(Restrictions.eq("farmId", selectedFarmId));
         List list = criteria.list();
         sessionFactoryBean.getCurrentSession().getTransaction().commit();
         return list;
