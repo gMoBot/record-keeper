@@ -7,6 +7,13 @@ public class FarmOverview extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JButton newApplication;
+    private JButton showBlocks;
+    private JButton showAllApplications;
+    private JButton showApplicators;
+    private JButton generateRpt;
+    private JComboBox reportType;
+    private JButton showProducts;
 
     private JList<String> farmApplicationList;
 
@@ -14,6 +21,12 @@ public class FarmOverview extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+        newApplication.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        });
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

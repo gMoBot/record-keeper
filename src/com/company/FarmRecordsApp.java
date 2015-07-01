@@ -1,7 +1,9 @@
 package com.company;
 
 import com.company.Dialogs.BlockProfileDialog;
+import com.company.Dialogs.FarmOverview;
 import com.company.Dialogs.FarmSelectorDialog;
+import com.company.FarmSelector.MainFrameApp;
 import com.company.Models.ApplicationProfile;
 import com.company.Models.BlockProfile;
 import com.company.Models.FarmProfile;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.List;
-import java.util.Vector;
 
 @Component (value= "farmRecordsApp")
 public class FarmRecordsApp {
@@ -40,18 +41,23 @@ public class FarmRecordsApp {
         System.out.println("Welcome!");
         System.out.println("Loading Farm Profile window...");
 
+        MainFrameApp mainFrameApp = new MainFrameApp();
+
+//        MainFrameFarmSelector mainFrameFarmSelector = new MainFrameFarmSelector();
+
+
         farmProfiles = farmProfileDao.getFarmProfile();
         for (FarmProfile farmProfile : farmProfiles){
             System.out.format("%s\n", farmProfile.getFarmName());
         }
 
-        generateFarmSelector();
-        selectedFarmProfile = farmProfileDao.getSelectedFarmProfile(selectedFarmName);
-        selectedFarmId = String.valueOf(selectedFarmProfile.get(0).getId());
+//        generateFarmSelector();
+//        selectedFarmProfile = farmProfileDao.getSelectedFarmProfile(selectedFarmName);
+//        selectedFarmId = String.valueOf(selectedFarmProfile.get(0).getId());
 
         System.out.format("Selected Farm Name: %s\n", selectedFarmName);
 
-        generateFarmOverview();
+//        generateFarmOverview();
 
 //        generateSelectedBlockProfile();
 
@@ -132,6 +138,7 @@ public class FarmRecordsApp {
 
     private void generateFarmOverview() {
             //TODO: Fine tune data functionality and display on this model
+            // TODO: change list to table
             DefaultListModel<String> farmOverviewDefaultListModel = new DefaultListModel<String>();
             List<ApplicationProfile> appProfiles = farmProfileDao.getOverviewApplicationProfiles(selectedFarmId);
             if(appProfiles.isEmpty()){
@@ -150,10 +157,11 @@ public class FarmRecordsApp {
                     farmOverviewDefaultListModel.addElement(applicationProfile.getAppNotes());
                 }
             }
-            FarmSelectorDialog farmSelectorDialog = new FarmSelectorDialog();
-            farmSelectorDialog.setFarmProfileList(farmOverviewDefaultListModel);
-            farmSelectorDialog.pack();
-            farmSelectorDialog.setVisible(true);
+        FarmOverview farmOverview = new FarmOverview();
+        farmOverview.setFarmApplicationList(farmOverviewDefaultListModel);
+        farmOverview.pack();
+        farmOverview.setVisible(true);
+
 
 //            if (farmSelectorDialog.getFarmName() != null) {
 //                if (farmSelectorDialog.getFarmName().equals("CreateNew")) {

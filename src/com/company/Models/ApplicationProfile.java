@@ -17,9 +17,11 @@ public class ApplicationProfile {
     @Column(name = "farm_id")
     private String farmId;
     @Column(name = "app_number")
-    private String blockName;
-    @Column(name = "block_name")
     private String appNumber;
+    @Column(name = "block_name")
+    private String blockName;
+    @Column(name = "product_name")
+    private String productName;
     @Column(name = "app_date")
     private String appDate;
     @Column(name = "target_pest")
@@ -49,6 +51,14 @@ public class ApplicationProfile {
 
     public void setBlockName(String blockName) {
         this.blockName = blockName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getAppNumber() {
